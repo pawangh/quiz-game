@@ -6,9 +6,25 @@ TITLE="quiz"
 
 marqueebox=Rect(0,0,800,70)
 question_box=Rect(20,80,600,180)
+answer_box1=Rect(20,280,230,90)
+answer_box2=Rect(330,280,230,90)
+answer_box3=Rect(20,380,230,90)
+answer_box4=Rect(330,380,230,90)
+skip=Rect(650,280,100,300)
+timer=Rect(650,100,100,100)
 
 def draw():
     screen.fill("black")
     screen.draw.filled_rect(marqueebox,"purple")
     screen.draw.filled_rect(question_box,"blue")
+    screen.draw.filled_rect(answer_box1,"yellow")
+    screen.draw.filled_rect(answer_box2,"yellow")
+    screen.draw.filled_rect(answer_box3,"yellow")
+    screen.draw.filled_rect(answer_box4,"yellow")
+    screen.draw.filled_rect(skip,"yellow")
+    screen.draw.filled_rect(timer,"yellow")
+
+    screen.draw.textbox("welcome to the quiz",marqueebox,color="white")
+def update():
+    pass
 pgzrun.go()
