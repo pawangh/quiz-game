@@ -16,9 +16,10 @@ timer=Rect(650,100,100,100)
 allquestions=[]
 totalquestions=11
 question=[]
-questionnumber=0
+questionnumber=-1
 score=0
 gameover=False
+answerboxs=[answer_box1,answer_box2,answer_box3,answer_box4]
 
 
 def draw():
@@ -48,19 +49,33 @@ def read_question_file():
     file.close()
 read_question_file()
 def readnextque():
-    global question
-    question=allquestions[questionnumber].split(",")
+    global question,questionnumber
+    questionnumber=questionnumber+1
+    if questionnumber>=totalquestions:
+        game_over()
+    else:
+        question=allquestions[questionnumber].split(",")
 readnextque()
 def update():
     marqueebox.x=marqueebox.x-5
     if marqueebox.x<-800:
         marqueebox.x=800
 def on_mouse_down(pos):
+    global score
     optionno=1
-    if answer_box1.collidepoint(pos):
-        if optionno==question[5]:
-            pass
-
-
+    for boxs in answerboxs:
+        if boxs.collidepoint(pos):
+            if optionno==int(question[5]):
+                score=score+1
+                readnextque()
+            else:
+                game_over()
+        optionno=optionno+1
+    if skip.collidepoint(pos):
+        readnextque()
+def game_over():
+    global gameover,question
+    question=["game over.score="+str(score)]
+    gameover=True
 
 pgzrun.go()
