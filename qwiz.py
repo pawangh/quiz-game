@@ -75,7 +75,7 @@ def on_mouse_down(pos):
         readnextque()
 def game_over():
     global gameover,question
-    question=["game over.score="+str(score)]
+    question=["game over.score="+str(score), "_","_","_","_","5"]
     gameover=True
 
 pgzrun.go()
